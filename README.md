@@ -1,5 +1,6 @@
 # projectpi
-An attempt to install OpenProject on Raspberry Pi 4
+An attempt to install OpenProject on Raspberry Pi 4.
+This took me about an hour including writing (mostly copy/pasting) the how to below, but I am pretty familiar with the Pi and Linux command line so it may take you a little longer.
 
 # Image your Pi
 I used Raspberry Pi Imager v1.8.4 from https://www.raspberrypi.com/software/ <br>
@@ -118,7 +119,7 @@ I used the recommended "one container per process" method<br>
 ```
 git clone https://github.com/opf/openproject-deploy --depth=1 --branch=stable/13 openproject
 ```
-## Run Compose Setup
+## Run Compose & Setup with Pull
 Change to the compose directory for the following commands to run
 ```
 cd openproject/compose
@@ -128,7 +129,18 @@ Pull the latest. After running the pull command, I was informed that I don't hav
 sudo apt  install docker-compose -y
 ```
 Now pull the latest (the OpenProject how to does not use Sudo in the tutorial, but I did not have permissions to pull without it)<br>
-The pull took a bit, I suppose this is the acutal setup of OpenProject
+The pull took a bit, I suppose this is the acutal setup of OpenProject. I didn't keep track, but it was less than 10 minutes.
 ```
 sudo docker-compose pull
 ```
+## Launch
+OpenProject has a note about how this command will launch openproject without https on localhost. In production you will want to use https and I would recommend using Certbot from Let's Encrypt and I will update this if and when I do so for myself.<br>
+same comment as above about running with sudo permissions
+```
+sudo OPENPROJECT_HTTPS=false docker-compose up -d
+```
+## Test
+OpenProject does note that "after awhile, OpenProject should be up and running"<br> 
+I then navigated to http://RaspPiIPAddress:8080/<br>
+I first received nothing, then a 503 error<br>
+2311
