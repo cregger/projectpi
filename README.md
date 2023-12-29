@@ -143,4 +143,10 @@ sudo OPENPROJECT_HTTPS=false docker-compose up -d
 OpenProject does note that "after awhile, OpenProject should be up and running"<br> 
 I then navigated to http://RaspPiIPAddress:8080/<br>
 I first received nothing, then a 503 error<br>
-2311
+After about 6 or 7 minutes I refreshed and was welcomed with and OpenProject sign in page<br>
+the default login is
+***admin***<br>
+***admin***<br>
+it then prompts for a new password for admin user
+# Complete for now
+upon logging in it asks to change the hostname as it is not designed to run off of localhost so I will be tackling this in the future
